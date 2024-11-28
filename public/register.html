@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация юридического лица</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>Узнай Россию</h1>
+            </div>
+            <nav class="nav">
+                <a href="/" class="nav-link">Главная</a>
+                <a href="#about" class="nav-link">О нас</a>
+                <a href="#services" class="nav-link">Услуги</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+                <a href="/public/login.html" class="login-btn">Войти</a>
+            </nav>
+        </div>
+    </header>
+
+    <main style="padding-top: 80px;">
+        <div class="container">
+            <h1 style="text-align: center; margin-bottom: 2rem;">Регистрация юридического лица</h1>
+            <form id="registrationForm">
+                <div class="form-section">
+                    <h2>Сведения о юридическом лице</h2>
+                    <input type="text" name="name" placeholder="Полное наименование" required>
+                    <input type="text" name="address" placeholder="Адрес" required>
+                    <input type="text" name="rto" placeholder="Номер РТО (например, РТО 022131)">
+                    <input type="text" name="inn" placeholder="ИНН (10 цифр)" required>
+                    <input type="text" name="kpp" placeholder="КПП (9 цифр)" required>
+                </div>
+
+                <div class="form-section">
+                    <h2>Банковские реквизиты</h2>
+                    <input type="text" name="account" placeholder="Расчетный счет (20 цифр)" required>
+                    <input type="text" name="bank_name" placeholder="Наименование банка" required>
+                    <input type="text" name="bik" placeholder="БИК (9 цифр)" required>
+                    <input type="text" name="corr_account" placeholder="Корреспондентский счет (20 цифр)">
+                </div>
+
+                <div class="form-section">
+                    <h2>Контактное лицо</h2>
+                    <input type="text" name="fio" placeholder="ФИО" required>
+                    <input type="tel" name="phone" placeholder="+7 XXX XXX XX XX" required>
+                    <input type="email" name="email" placeholder="E-mail" required>
+                </div>
+
+                <div class="form-section">
+                    <h2>Данные для входа</h2>
+                    <input type="password" name="password" placeholder="Пароль" required>
+                    <input type="password" name="password_confirm" placeholder="Повторите пароль" required>
+                </div>
+
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer" style="margin-top: 2rem;">
+        <div class="container">
+            <p>&copy; 2024 ООО "Узнай Россию". Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="/public/register.js"></script>
+</body>
+</html> 

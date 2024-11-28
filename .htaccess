@@ -1,0 +1,10 @@
+RewriteEngine On
+Options -Indexes
+
+RewriteRule ^api/(.*)$ backend/index.php?q=$1 [L,QSA]
+
+RewriteRule ^backend/(.*)$ backend/$1 [L]
+
+RewriteRule !^public/ public/$0 [L]
+AddType text/css .css
+AddType text/javascript .js

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заявки | Узнай Россию</title>
+    <link rel="stylesheet" href="/public/style.css">
+    <style>
+        .order-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .order-block {
+            background: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .route-item {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .route-item.fastest {
+            border-color: #28a745;
+        }
+
+        .fastest-label {
+            background: #28a745;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-left: 1rem;
+        }
+
+        .stop-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .warning-message {
+            background: #ffc107;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <!-- Ваш существующий header -->
+    </header>
+
+    <main>
+        <div class="order-container">
+            <!-- Блок 1: Выбор маршрута -->
+            <div class="order-block" id="block1">
+                <h2>Выбор маршрута</h2>
+                <form id="routeForm">
+                    <div class="form-group">
+                        <label for="start_point">Начальный пункт</label>
+                        <input type="text" id="start_point" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="end_point">Конечный пункт</label>
+                        <input type="text" id="end_point" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="departure_date">Дата отправления</label>
+                        <input type="date" id="departure_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="departure_time">Время отправления</label>
+                        <input type="time" id="departure_time" required>
+                    </div>
+                    <button type="submit">Найти маршруты</button>
+                </form>
+            </div>
+
+            <!-- Блок 2: Варианты маршрутов -->
+            <div class="order-block" id="block2" style="display: none;">
+                <h2>Доступные маршруты</h2>
+                <div id="routesList"></div>
+            </div>
+
+            <!-- Блок 3: Выбор остановок -->
+            <div class="order-block" id="block3" style="display: none;">
+                <h2>Выбор остановок</h2>
+                <div id="stopsList"></div>
+                <div id="arrivalTime"></div>
+                <div id="warningMessage" class="warning-message" style="display: none;">
+                    Внимание! Во время прибытия автобуса на конечный пункт общественный транспорт не работает
+                </div>
+                <button id="submitOrder">Оформить заказ</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="/public/order.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет | Узнай Россию</title>
+    <link rel="stylesheet" href="/public/style.css">
+    <style>
+        .profile-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .info-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .info-section h3 {
+            color: #007bff;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #007bff;
+        }
+
+        .info-item {
+            margin-bottom: 1rem;
+        }
+
+        .info-item label {
+            display: block;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-item span {
+            display: block;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            width: 200px;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #c82333;
+        }
+
+        @media (max-width: 768px) {
+            .profile-info {
+                grid-template-columns: 1fr;
+            }
+        }
+        .create-order-btn, .create-route-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .create-order-btn {
+            background: #007bff;
+        }
+
+        .create-route-btn {
+            background: #28a745;
+        }
+
+        .create-order-btn:hover {
+            background: #0056b3;
+        }
+
+        .create-route-btn:hover {
+            background: #218838;
+        }
+
+        .view-routes-btn {
+            background: #17a2b8;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .view-routes-btn:hover {
+            background: #138496;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>Узнай Россию</h1>
+            </div>
+            <nav class="nav">
+                <a href="/" class="nav-link">Главная</a>
+                <a href="#about" class="nav-link">О нас</a>
+                <a href="#services" class="nav-link">Услуги</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+                <button class="logout-btn" onclick="logout()">Выйти</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="profile-container">
+            <div class="profile-header">
+                <h2>Личный кабинет</h2>
+            </div>
+            <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                <button class="create-order-btn" onclick="window.location.href='/public/order.html'">Оформить заявку</button>
+                <button class="create-route-btn" onclick="window.location.href='/public/create-route.html'">Создать маршрут</button>
+                <button class="view-routes-btn" onclick="window.location.href='/public/routes-list.html'">Просмотр маршрутов</button>
+            </div>
+            <div class="profile-info">
+                <div class="info-section">
+                    <h3>Данные организации</h3>
+                    <div class="info-item">
+                        <label>Наименование организации</label>
+                        <span id="orgName"></span>
+                    </div>
+                    <div class="info-item">
+                        <label>ИНН</label>
+                        <span id="inn"></span>
+                    </div>
+                    <div class="info-item">
+                        <label>КПП</label>
+                        <span id="kpp"></span>
+                    </div>
+                    <div class="info-item">
+                        <label>Адрес</label>
+                        <span id="address"></span>
+                    </div>
+                    <div class="info-item">
+                        <label>РТО</label>
+                        <span id="rto"></span>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Банковские реквизиты</h3>
+                    <div class="info-item">
+                        <label>Расчетный счет</label>
+                        <span id="account"></span>
+                    </div>
+                    <div class="info-item">
+                        <label>Наименование банка</label>
+                        <span id="bankName"></span>
+                    </div>
+                    <div class="info-item">
+                        <label>БИК</label>
+                        <span id="bik"></span>
+                    </div>
+                    <div class="info-item">
+                        <label>Корр. счет</label>
+                        <span id="corrAccount"></span>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Контактная информация</h3>
+                    <div class="info-item">
+                        <label>ФИО</label>
+                        <span id="fio"></span>
+                    </div>
+                    <div class="info-item">
+                        <label>Телефон</label>
+                        <span id="phone"></span>
+                    </div>
+                    <div class="info-item">
+                        <label>Email</label>
+                        <span id="email"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Проверка авторизации
+        document.addEventListener('DOMContentLoaded', () => {
+            const userData = localStorage.getItem('userData');
+            console.log('Данные пользователя из localStorage:', userData); // Отладка
+
+            if (!userData) {
+                console.log('Нет данных пользователя, редирект на логин'); // Отладка
+                window.location.href = '/public/login.html';
+                return;
+            }
+
+            try {
+                const user = JSON.parse(userData);
+                console.log('Распарсенные данные пользователя:', user); // Отладка
+
+                // Заполнение данных профиля
+                document.getElementById('orgName').textContent = user.name || '-';
+                document.getElementById('inn').textContent = user.inn || '-';
+                document.getElementById('kpp').textContent = user.kpp || '-';
+                document.getElementById('address').textContent = user.address || '-';
+                document.getElementById('rto').textContent = user.rto || '-';
+                document.getElementById('account').textContent = user.account || '-';
+                document.getElementById('bankName').textContent = user.bank_name || '-';
+                document.getElementById('bik').textContent = user.bik || '-';
+                document.getElementById('corrAccount').textContent = user.curren_account || '-';
+                document.getElementById('fio').textContent = user.fio || '-';
+                document.getElementById('phone').textContent = user.phone || '-';
+                document.getElementById('email').textContent = user.email || '-';
+            } catch (error) {
+                console.error('Ошибка при обработке данных:', error); // Отладка
+            }
+        });
+
+        // Функция выхода
+        function logout() {
+            localStorage.removeItem('userData');
+            localStorage.removeItem('userInn');
+            window.location.href = '/public/login.html';
+        }
+    </script>
+</body>
+</html> 
